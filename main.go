@@ -32,8 +32,8 @@ func main() {
 		c.Next()
 	})
 
-	router.POST("/api/search/message", controller.GetMessageByName)
-	router.POST("/api/search/userid", controller.GetUserIdByName)
+	router.GET("/api/test/version", controller.Version)
+	router.POST("/api/test/message", controller.GetMessageByName)
 
 	//router.RunTLS(":5002", "server.crt", "server.key")
 	router.Run(":8091")

@@ -10,6 +10,7 @@ import (
 
 func main() {
 	utils.Config()
+	utils.InitLog()
 	// 初始化一个 validator
 	binding.Validator = utils.VALIDATE
 
@@ -33,7 +34,12 @@ func main() {
 	})
 
 	router.GET("/api/test/version", controller.Version)
+	router.GET("/api/test/showheader", controller.ShowHeader)
+	router.POST("/api/test/common", controller.Common)
+	router.POST("/api/test/community", controller.Community)
 	router.POST("/api/test/message", controller.GetMessageByName)
+	router.POST("/api/test/showdir", controller.ShowDir)
+	router.GET("/api/test/killself", controller.KillSelf)
 
 	//router.RunTLS(":5002", "server.crt", "server.key")
 	router.Run(":8091")

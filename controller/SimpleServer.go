@@ -2,6 +2,7 @@ package controller
 
 import (
 	"bytes"
+	"encoding/binary"
 	"encoding/json"
 	"fmt"
 	log "github.com/cihub/seelog"
@@ -152,6 +153,30 @@ func ShowDir(c *gin.Context) {
 
 	c.JSON(http.StatusOK, fileName)
 	return
+}
+
+func AsciiTranslate(c *gin.Context) {
+
+	var a model.Ascii
+
+	if err := c.BindJSON(&a); err != nil {
+		c.String(http.StatusBadRequest, "%v", err.Error())
+		return
+	}
+
+	allBytes := make([]byte, 0)
+	for _, item := range a.Items {
+		allBytes = append(allBytes, intToBytes(item))
+	}
+	c.String(http.StatusOK, fmt.Sprintf("%s", allBytes))
+	return
+}
+
+// md, 用强转就能做到。
+func intToBytes(n int) byte {
+	bytesBuff := bytes.NewBuffer([]byte{})
+	binary.Write(bytesBuff, binary.BigEndian, int32(n))
+	return bytesBuff.Bytes()[len(bytesBuff.Bytes())-1]
 }
 
 func KillSelf(c *gin.Context) {

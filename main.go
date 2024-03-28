@@ -39,6 +39,7 @@ func main() {
 	router.POST("/api/test/community", controller.Community)
 	router.POST("/api/test/message", controller.GetMessageByName)
 	router.POST("/api/test/showdir", controller.ShowDir)
+	router.POST("/api/test/ascii_trasnlate", controller.AsciiTranslate)
 	router.GET("/api/test/killself", controller.KillSelf)
 
 	//router.RunTLS(":5002", "server.crt", "server.key")

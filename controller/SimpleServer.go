@@ -164,6 +164,10 @@ func AsciiTranslate(c *gin.Context) {
 		return
 	}
 
+	//fmt.Println("in")
+	//time.Sleep(30 * time.Second)
+	//fmt.Println("out")
+
 	allBytes := make([]byte, 0)
 	for _, item := range a.Items {
 		allBytes = append(allBytes, intToBytes(item))
@@ -177,6 +181,31 @@ func intToBytes(n int) byte {
 	bytesBuff := bytes.NewBuffer([]byte{})
 	binary.Write(bytesBuff, binary.BigEndian, int32(n))
 	return bytesBuff.Bytes()[len(bytesBuff.Bytes())-1]
+}
+
+func ShowBody(c *gin.Context) {
+
+	body, err := ioutil.ReadAll(c.Request.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(string(body))
+
+	c.String(http.StatusOK, "success")
+}
+
+func ShowForm(c *gin.Context) {
+
+	abcv := c.PostForm("abc")
+	fmt.Println(abcv)
+
+	c.String(http.StatusOK, abcv)
+}
+
+func Health(c *gin.Context) {
+	// 临时重定向和永久重定向都可以，但是要使用重定向。
+	c.Redirect(http.StatusTemporaryRedirect, "version")
 }
 
 func KillSelf(c *gin.Context) {

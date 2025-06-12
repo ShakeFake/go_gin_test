@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/wilikidi/go_gin_test/controller"
@@ -41,7 +42,24 @@ func main() {
 	router.POST("/api/test/showdir", controller.ShowDir)
 	router.POST("/api/test/ascii_trasnlate", controller.AsciiTranslate)
 	router.GET("/api/test/killself", controller.KillSelf)
+	router.POST("/api/test/showBody", controller.ShowBody)
+	router.POST("/api/test/showForm", controller.ShowForm)
+	router.GET("/api/test/health", controller.Health)
+
+	// 公司一组url
+	// 用来进行 key 的解谜
+	router.POST("/api/tvu/decrypt_key", controller.DecryptSecretKey)
+	router.POST("/api/tvu/signature", controller.GetSignature)
+
+	// 生成数据一组api
+	router.GET("/api/data/student", controller.GenerateStudent)
+	router.GET("/api/data/student/api/health", controller.StudentHealth)
+
+	// apifox test
+	router.POST("/api/token/access", controller.Login)
+	router.POST("/api/token/check", controller.Check)
+	// todo: 缺少 form 表单系列组 api
 
 	//router.RunTLS(":5002", "server.crt", "server.key")
-	router.Run(":8091")
+	router.Run(fmt.Sprintf(":%v", utils.HttpPort))
 }

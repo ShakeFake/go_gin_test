@@ -15,7 +15,7 @@ func Config() {
 		panic(err)
 	}
 
-	HttpPort = conf.MustValue("[Server]", "http_port", "8091")
+	HttpPort = conf.MustValue("Server", "http_port", "8091")
 
 	log.Infof("HttpPort is:%v", HttpPort)
 }

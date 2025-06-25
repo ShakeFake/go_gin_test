@@ -46,11 +46,6 @@ func main() {
 	router.POST("/api/test/showForm", controller.ShowForm)
 	router.GET("/api/test/health", controller.Health)
 
-	// 公司一组url
-	// 用来进行 key 的解谜
-	router.POST("/api/tvu/decrypt_key", controller.DecryptSecretKey)
-	router.POST("/api/tvu/signature", controller.GetSignature)
-
 	// 生成数据一组api
 	router.GET("/api/data/student", controller.GenerateStudent)
 	router.GET("/api/data/student/api/health", controller.StudentHealth)

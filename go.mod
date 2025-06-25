@@ -2,13 +2,12 @@ module github.com/wilikidi/go_gin_test
 
 go 1.18
 
-require (
-	github.com/gin-gonic/gin v1.9.1
-	github.com/itsjamie/gin-cors v0.0.0-20220228161158-ef28d3d2a0a8
-)
+require github.com/gin-gonic/gin v1.9.1
+
+require github.com/smartystreets/goconvey v1.8.1 // indirect
 
 require (
-	github.com/Unknwon/goconfig v1.0.0 // indirect
+	github.com/Unknwon/goconfig v1.0.0
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/cihub/seelog v0.0.0-20170130134532-f561c5e57575 // indirects
@@ -16,7 +15,7 @@ require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/go-playground/validator/v10 v10.19.0 // indirect
+	github.com/go-playground/validator/v10 v10.19.0
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.5 // indirect

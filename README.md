@@ -3,7 +3,7 @@
     go build -o test .
 
 ## 镜像
-    docker build -t yunkai:test .
+    docker build -t local:test .
 
 ## 镜像运行
-    docker run -d -p 8091:8091 --name test yunkai:test
+    docker run -d -p 8091:8091 --name test local:test
